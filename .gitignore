@@ -1,0 +1,18 @@
+# IDE files
+.idea/
+*.iml
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# Build
+**/build/
+**/.gradle/
+**/out/
+
+# Log files
+*.log
+
+# Docker support
+.env

@@ -1,0 +1,43 @@
+server:
+  port: 8080
+
+app:
+  crudBaseUrl: http://localhost:8081/
+  collections:
+    restaurants: restaurants
+    orders: orders
+
+logging.level:
+  root: INFO
+  com.example.frontend: DEBUG
+
+jwt:
+  secret: "replace-this-with-a-long-random-secret-at-least-32-chars"
+  accessTokenValiditySeconds: 900   # 15 minutes
+  refreshTokenValiditySeconds: 1209600  # 14 days
+
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017
+      database: foodapp
+  redis:
+    host: localhost
+    port: 6379
+  kafka:
+    bootstrap-servers: localhost:9092
+    admin:
+      properties:
+        bootstrap.servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: "com.example.frontend.*"
+
+google:
+  clientId: "google-client-id-here"

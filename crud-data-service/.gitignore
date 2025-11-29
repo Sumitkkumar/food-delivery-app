@@ -1,0 +1,19 @@
+# IDE files
+.idea/
+*.iml
+
+# Gradle build files
+.gradle/
+build/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Logs
+*.logs
+
+# Environment files
+application-local.yaml
+application-dev.yaml
+.env
