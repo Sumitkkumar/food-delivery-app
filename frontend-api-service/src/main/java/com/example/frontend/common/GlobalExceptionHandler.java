@@ -1,6 +1,10 @@
 package com.example.frontend.common;
 
-import com.example.frontend.exception.*;
+import com.example.frontend.exception.DownstreamException;
+import com.example.frontend.exception.BadRequestException;
+import com.example.frontend.exception.ForbiddenException;
+import com.example.frontend.exception.NotFoundException;
+import com.example.frontend.exception.UnauthorizedException;
 import org.springframework.core.convert.ConversionFailedException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
