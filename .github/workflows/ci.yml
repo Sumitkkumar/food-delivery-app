@@ -77,6 +77,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Set env variables
+        run: |
+          OWNER=$(echo "${{ github.repository_owner }}" | tr '[:upper:]' '[:lower:]')
+          echo "OWNER=$OWNER" >> $GITHUB_ENV
+          echo "SHA_TAG=${{ github.sha }}" >> $GITHUB_ENV
+          echo "IMAGE_FRONTEND=ghcr.io/$OWNER/foodapp-frontend" >> $GITHUB_ENV
+          echo "IMAGE_CRUD=ghcr.io/$OWNER/foodapp-crud" >> $GITHUB_ENV
+
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
@@ -87,15 +95,19 @@ jobs:
       - name: Build Frontend Docker Image
         run: |
           cd frontend-api-service
-          docker build -t ghcr.io/${{ github.repository_owner }}/foodapp-frontend:latest .
+          docker build -t $IMAGE_FRONTEND:latest -t $IMAGE_FRONTEND:$SHA_TAG .
 
       - name: Build CRUD Docker Image
         run: |
           cd crud-data-service
-          docker build -t ghcr.io/${{ github.repository_owner }}/foodapp-crud:latest .
+          docker build -t $IMAGE_CRUD:latest -t $IMAGE_CRUD:$SHA_TAG .
 
       - name: Push Frontend Image
-        run: docker push ghcr.io/${{ github.repository_owner }}/foodapp-frontend:latest
+        run: |
+          docker push $IMAGE_FRONTEND:latest
+          docker push $IMAGE_FRONTEND:$SHA_TAG
 
       - name: Push CRUD Image
-        run: docker push ghcr.io/${{ github.repository_owner }}/foodapp-crud:latest
+        run: |
+          docker push $IMAGE_CRUD:latest
+          docker push $IMAGE_CRUD:$SHA_TAG
