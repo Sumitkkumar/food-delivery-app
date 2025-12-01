@@ -58,11 +58,13 @@ jobs:
       - name: Test Frontend Layer
         run: |
           cd frontend-api-service
+          chmod +x gradlew
           ./gradlew test
 
       - name: Test CRUD Layer
         run: |
           cd crud-data-service
+          chmod +x gradlew
           ./gradlew test
 
   deploy:
