@@ -1,12 +1,6 @@
 package com.example.frontend.auth;
 
-import com.example.frontend.auth.dto.LoginRequest;
-import com.example.frontend.auth.dto.RegisterRequest;
 import com.example.frontend.auth.dto.TokenResponse;
-import com.example.frontend.auth.RefreshToken;
-import com.example.frontend.auth.RefreshTokenRepository;
-import com.example.frontend.auth.User;
-import com.example.frontend.auth.UserRepository;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
 import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -16,7 +10,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 @RequiredArgsConstructor

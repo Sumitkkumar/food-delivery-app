@@ -33,5 +33,6 @@ tasks.test { useJUnitPlatform() }
 
 checkstyle {
     toolVersion = '10.14.2'
-    configProperties = ['checkstyle.cache.file': "${buildDir}/checkstyle.cache"]
+    configFile = file("${projectDir}/config/checkstyle/checkstyle.xml")
+    configProperties = ['checkstyle.cache.file': "${projectDir}/checkstyle.cache"]
 }

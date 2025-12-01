@@ -1,9 +1,15 @@
 package com.example.frontend.auth;
 
-import com.example.frontend.auth.dto.*;
+import com.example.frontend.auth.dto.LoginRequest;
+import com.example.frontend.auth.dto.RefreshRequest;
+import com.example.frontend.auth.dto.RegisterRequest;
+import com.example.frontend.auth.dto.TokenResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
