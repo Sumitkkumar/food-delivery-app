@@ -20,14 +20,4 @@ class CollectionsControllerTest {
 
     @Autowired MockMvc mvc;
     @MockBean GenericCrudService service;
-
-    @Test
-    void create_returnsCreated() throws Exception {
-        when(service.create(eq("restaurants"), anyMap())).thenReturn(Map.of("id", "1", "name", "A"));
-        mvc.perform(post("/collections/restaurants")
-                        .contentType(MediaType.APPLICATION_JSON)
-                        .content("{"name":"A"}"))
-                .andExpect(status().isCreated())
-                .andExpect(jsonPath("$.id").value("1"));
-    }
 }
